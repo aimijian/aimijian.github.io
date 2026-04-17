@@ -8,6 +8,8 @@ DEBS_DIR = "debs"
 DEPICTIONS_DIR = "depictions"
 BASE_URL = "https://aimijian.github.io"
 
+os.makedirs(DEPICTIONS_DIR, exist_ok=True)
+
 for root, dirs, files in os.walk(DEPICTIONS_DIR):
     for f in files:
         if f != f.lower():
@@ -27,7 +29,7 @@ def compute_hashes(path):
 
 entries = []
 
-for file in os.listdir(DEBS_DIR):
+for file in sorted(os.listdir(DEBS_DIR)):
     if not file.endswith(".deb"):
         continue
 
@@ -37,12 +39,15 @@ for file in os.listdir(DEBS_DIR):
         ["dpkg-deb", "-f", path],
         text=True,
         errors="ignore"
-    ).strip()
+    )
 
-    package = ""
+    package = None
     for line in control.splitlines():
-        if line.startswith("Package:"):
+        if line.lower().startswith("package:"):
             package = line.split(":", 1)[1].strip()
+
+    if not package:
+        continue
 
     pkg_dir = os.path.join(DEPICTIONS_DIR, package.lower())
     os.makedirs(pkg_dir, exist_ok=True)
@@ -82,31 +87,24 @@ for file in os.listdir(DEBS_DIR):
     if header:
         depiction["headerImage"] = f"{BASE_URL}/depictions/{package.lower()}/{header.lower()}"
 
-    if not screenshots and not header:
-        depiction = None
-
-    if depiction:
-        with open(os.path.join(pkg_dir, "depiction.json"), "w", encoding="utf-8") as f:
-            json.dump(depiction, f, indent=2, ensure_ascii=False)
+    with open(os.path.join(pkg_dir, "depiction.json"), "w", encoding="utf-8") as f:
+        json.dump(depiction, f, indent=2, ensure_ascii=False)
 
     size = os.path.getsize(path)
     md5sum, sha1sum, sha256sum = compute_hashes(path)
 
-    entry = []
-    entry.append(control)
-    entry.append(f"Filename: debs/{file}")
-    entry.append(f"Size: {size}")
-    entry.append(f"MD5sum: {md5sum}")
-    entry.append(f"SHA1: {sha1sum}")
-    entry.append(f"SHA256: {sha256sum}")
+    entry = control.strip() + "\n"
+    entry += f"Filename: debs/{file}\n"
+    entry += f"Size: {size}\n"
+    entry += f"MD5sum: {md5sum}\n"
+    entry += f"SHA1: {sha1sum}\n"
+    entry += f"SHA256: {sha256sum}\n"
 
     if screenshots or header:
-        entry.append(f"Depiction: {BASE_URL}/depictions/{package.lower()}/depiction.json")
-        entry.append(f"SileoDepiction: {BASE_URL}/depictions/{package.lower()}/depiction.json")
+        entry += f"Depiction: {BASE_URL}/depictions/{package.lower()}/depiction.json\n"
+        entry += f"SileoDepiction: {BASE_URL}/depictions/{package.lower()}/depiction.json\n"
 
-    entry.append("")
-
-    entries.append("\n".join(entry))
+    entries.append(entry)
 
 with open("Packages", "w", encoding="utf-8") as f:
     f.write("\n".join(entries))
