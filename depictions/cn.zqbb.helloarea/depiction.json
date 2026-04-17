@@ -1,4 +1,16 @@
 {
   "class": "DepictionStackView",
-  "views": []
+  "views": [
+    {
+      "class": "DepictionScreenshotsView",
+      "itemSize": "{200, 415}",
+      "itemCornerRadius": 20,
+      "screenshots": [
+        {
+          "url": "https://aimijian.github.io/depictions/cn.zqbb.helloarea/screenshot_2.png",
+          "accessibilityText": "Screenshot 1"
+        }
+      ]
+    }
+  ]
 }
