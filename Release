@@ -1,0 +1,8 @@
+Origin: AvSox
+Label: Lao’s
+Suite: stable
+Version: 1.0
+Codename: ios
+Architectures: iphoneos-arm64e
+Components: main
+Description: The plugins in this source are for personal backup only.
