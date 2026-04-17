@@ -143,21 +143,21 @@ MD5sum: d3ea95f3c3dd351f279a6ca1da4b43ce
 SHA1: 009c4e887c9fd47d929a41c9c3131c9485c23c24
 SHA256: e042673755208057992b13fed0f31c56010e74766d2cd207c89a4937dc67b4ca
 
-Package: cn.null.fuckwechatadblocker
-Name: FuckWeChatAdBlocker
+Package: cn.null.fuckwechatads
+Name: FuckWeChatAds
 Description: An awesome MobileSubstrate tweak!
 Maintainer: null
 Author: null
 Depends: mobilesubstrate (>= 0.9.5000)
 Architecture: iphoneos-arm64e
-Icon: https://aimijian.github.io/depictions/cn.null.fuckwechatadblocker/fuckwechatadblocker.png
+Icon: https://aimijian.github.io/depictions/cn.null.fuckwechatads/fuckwechatads.png
 Version: 0.0.1-2+debug
 Pre-Depends: rootless-compat(>= 0.9)
-Filename: debs/FuckWeChatAdBlocker.deb
-Size: 16632
-MD5sum: ad11c7b2997ab71e35381ebb02dd9fc4
-SHA1: 87373d3dd9ff7d6df65ed9c69f417913011dbe67
-SHA256: 5bf080d104647293c4029137df49c5987379554d5c74426ff90a0122d96794d2
+Filename: debs/FuckWeChatAds.deb
+Size: 16624
+MD5sum: 4ae16ebd3db52a7d76fe4c833fcd95a4
+SHA1: 91ab42cd7d85fcc7f0c2361d1a1284c8aa0f802d
+SHA256: 9c06bed2edca286ef2ea55ae97c6365db36ca41b35d522c91f172f9b7ad2ed1a
 
 Package: cn.zqbb.helloarea
 Name: HelloArea
