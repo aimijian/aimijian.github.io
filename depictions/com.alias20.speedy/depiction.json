@@ -1,4 +1,21 @@
 {
   "class": "DepictionStackView",
-  "views": []
+  "views": [
+    {
+      "class": "DepictionScreenshotsView",
+      "itemSize": "{200, 415}",
+      "itemCornerRadius": 20,
+      "screenshots": [
+        {
+          "url": "https://aimijian.github.io/depictions/com.alias20.speedy/screenshot_1.png",
+          "accessibilityText": "Screenshot 1"
+        },
+        {
+          "url": "https://aimijian.github.io/depictions/com.alias20.speedy/screenshot_2.png",
+          "accessibilityText": "Screenshot 2"
+        }
+      ]
+    }
+  ],
+  "headerImage": "https://aimijian.github.io/depictions/com.alias20.speedy/header.png"
 }
