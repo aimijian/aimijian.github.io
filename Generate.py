@@ -92,30 +92,27 @@ for file in sorted(os.listdir(DEBS_DIR)):
         json.dump(depiction, f, indent=2, ensure_ascii=False)
 
     control_lines = []
-    current_key = None
-    current_value = []
+    seen_keys = set()
 
     for line in control.splitlines():
         if not line.strip():
             continue
 
         if ":" in line and not line.startswith(" "):
-            if current_key:
-                value = " ".join(current_value).strip()
-                control_lines.append(f"{current_key}: {value}")
             key, value = line.split(":", 1)
-            current_key = key.strip()
-            if current_key.lower() == "filename":
-                current_key = None
-                current_value = []
-                continue
-            current_value = [value.strip()]
-        else:
-            current_value.append(line.strip())
+            key = key.strip()
 
-    if current_key:
-        value = " ".join(current_value).strip()
-        control_lines.append(f"{current_key}: {value}")
+            if key.lower() in ["filename", "size", "md5sum", "sha1", "sha256"]:
+                continue
+
+            if key in seen_keys:
+                continue
+
+            seen_keys.add(key)
+            control_lines.append(f"{key}: {value.strip()}")
+
+        else:
+            continue
 
     control_clean = "\n".join(control_lines)
 
