@@ -8,6 +8,9 @@ DEBS_DIR = "debs"
 DEPICTIONS_DIR = "depictions"
 BASE_URL = "https://aimijian.github.io"
 
+if not os.path.exists(DEPICTIONS_DIR):
+    os.makedirs(DEPICTIONS_DIR, exist_ok=True)
+
 for root, dirs, files in os.walk(DEPICTIONS_DIR):
     for f in files:
         if f != f.lower():
@@ -25,6 +28,23 @@ def compute_hashes(path):
         hashlib.sha256(data).hexdigest()
     )
 
+def safe_control(path):
+    out = subprocess.check_output(
+        ["dpkg-deb", "-f", path],
+        text=True,
+        errors="ignore"
+    )
+
+    data = {}
+    for line in out.splitlines():
+        if ":" in line:
+            k, v = line.split(":", 1)
+            k = k.strip()
+            v = v.strip()
+            if k and v:
+                data[k] = v
+    return data
+
 entries = []
 
 for file in sorted(os.listdir(DEBS_DIR)):
@@ -32,18 +52,9 @@ for file in sorted(os.listdir(DEBS_DIR)):
         continue
 
     path = os.path.join(DEBS_DIR, file)
+    control = safe_control(path)
 
-    control = subprocess.check_output(
-        ["dpkg-deb", "-f", path],
-        text=True,
-        errors="ignore"
-    ).strip()
-
-    package = ""
-    for line in control.splitlines():
-        if line.lower().startswith("package:"):
-            package = line.split(":", 1)[1].strip()
-
+    package = control.get("Package", "").strip()
     if not package:
         continue
 
@@ -88,21 +99,33 @@ for file in sorted(os.listdir(DEBS_DIR)):
     with open(os.path.join(pkg_dir, "depiction.json"), "w", encoding="utf-8") as f:
         json.dump(depiction, f, indent=2, ensure_ascii=False)
 
-    control_lines = []
-    for line in control.splitlines():
-        if not line.strip():
-            continue
-        if line.lower().startswith("filename:"):
-            continue
-        control_lines.append(line.strip())
-
-    control_clean = "\n".join(control_lines)
-
     size = os.path.getsize(path)
     md5sum, sha1sum, sha256sum = compute_hashes(path)
 
     entry = []
-    entry.append(control_clean)
+    entry.append(f"Package: {package}")
+
+    if "Name" in control:
+        entry.append(f"Name: {control['Name']}")
+
+    if "Version" in control:
+        entry.append(f"Version: {control['Version']}")
+
+    if "Architecture" in control:
+        entry.append(f"Architecture: {control['Architecture']}")
+
+    if "Maintainer" in control:
+        entry.append(f"Maintainer: {control['Maintainer']}")
+
+    if "Author" in control:
+        entry.append(f"Author: {control['Author']}")
+
+    if "Description" in control:
+        entry.append(f"Description: {control['Description']}")
+
+    if "Depends" in control:
+        entry.append(f"Depends: {control['Depends']}")
+
     entry.append(f"Filename: debs/{file}")
     entry.append(f"Size: {size}")
     entry.append(f"MD5sum: {md5sum}")
