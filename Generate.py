@@ -41,7 +41,7 @@ for file in os.listdir(DEBS_DIR):
 
     package = ""
     for line in control.splitlines():
-        if line.startswith("Package:"):
+        if line.lower().startswith("package:"):
             package = line.split(":", 1)[1].strip()
 
     pkg_dir = os.path.join(DEPICTIONS_DIR, package.lower())
@@ -82,26 +82,14 @@ for file in os.listdir(DEBS_DIR):
     if header:
         depiction["headerImage"] = f"{BASE_URL}/depictions/{package.lower()}/{header.lower()}"
 
-    if not screenshots and not header:
-        depiction = None
-
-    if depiction:
-        with open(os.path.join(pkg_dir, "depiction.json"), "w", encoding="utf-8") as f:
-            json.dump(depiction, f, indent=2, ensure_ascii=False)
+    with open(os.path.join(pkg_dir, "depiction.json"), "w", encoding="utf-8") as f:
+        json.dump(depiction, f, indent=2, ensure_ascii=False)
 
     size = os.path.getsize(path)
     md5sum, sha1sum, sha256sum = compute_hashes(path)
 
-    control_lines = []
-    for line in control.splitlines():
-        if line.lower().startswith("filename:"):
-            continue
-        control_lines.append(line)
-
-    control_clean = "\n".join(control_lines)
-
     entry = []
-    entry.append(control_clean)
+    entry.append(control)
     entry.append(f"Filename: debs/{file}")
     entry.append(f"Size: {size}")
     entry.append(f"MD5sum: {md5sum}")
