@@ -48,10 +48,7 @@ SHA256: f5d945b2b60354c19acfde52b0f1399dc3a32c77670d1c325ee2cfc95b403bd3
 Package: com.kuan.noads
 Name: CoolMarketNoAds
 Author: Unknown Anonymous
-Description: Ku‘an goes to advertising
- * No pop-up window
- * Remove open-screen ads
- * Remove post ads
+Description: Ku‘an goes to advertising * No pop-up window * Remove open-screen ads * Remove post ads
 Depends: mobilesubstrate
 Maintainer: Anonymous
 Architecture: iphoneos-arm64e
