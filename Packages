@@ -1,29 +1,25 @@
 Package: com.shiftcmdk.bookmarkicons
 Name: BookmarkIcons
-Depends: mobilesubstrate
-Description: Set custom icons for Safari bookmarks.
+Version: 1.0-1+debug
+Architecture: iphoneos-arm64e
 Maintainer: shiftcmdk
 Author: shiftcmdk
-Architecture: iphoneos-arm64e
-Version: 1.0-1+debug
-Icon: https://aimijian.github.io/depictions/com.shiftcmdk.bookmarkicons.png
-Pre-Depends: rootless-compat(>= 0.9)
+Description: Set custom icons for Safari bookmarks.
+Depends: mobilesubstrate
 Filename: debs/BookmarkIcons.deb
 Size: 16456
 MD5sum: 92ac4cbe4fb09ef75e0cf2ddd2431249
 SHA1: a518ce3306742aa8364a4e4b5c24a045e9e9bdf8
 SHA256: 55152d10a3e965b394f6bce837a1bb532bd0d5cbe5cfb4a3b235e35d145e790a
 
-Name: CCLessStatusBAR
 Package: com.cydiageek.cclessstatusbar
-Priority: optional
-Depends: mobilesubstrate, firmware (>= 11.0)
+Name: CCLessStatusBAR
 Version: 1.0.4
 Architecture: iphoneos-arm64e
-Description: Hide the Status Bar and the Chevron on the Control Center!
 Maintainer: BigBoss
 Author: CydiaGeek
-Pre-Depends: rootless-compat(>= 0.9)
+Description: Hide the Status Bar and the Chevron on the Control Center!
+Depends: mobilesubstrate, firmware (>= 11.0)
 Filename: debs/CCStatus.deb
 Size: 5016
 MD5sum: 47c766d029730b48ad7dbd2e2dd934c8
@@ -32,13 +28,12 @@ SHA256: 8b377d944f6a21420cf2e99e46e0d890499f214d9d8f0afe68bdc483f2cd4992
 
 Package: com.sini921.chatgpthook
 Name: ChatGPTHook
-Description: Remove the pop-up window that allows ChatGPT to update every time it is opened.
+Version: 0.0.1-2+debug
+Architecture: iphoneos-arm64e
 Maintainer: SINI
 Author: SINI
+Description: Remove the pop-up window that allows ChatGPT to update every time it is opened.
 Depends: mobilesubstrate (>= 0.9.5000)
-Architecture: iphoneos-arm64e
-Version: 0.0.1-2+debug
-Pre-Depends: rootless-compat(>= 0.9)
 Filename: debs/ChatGPT.deb
 Size: 4292
 MD5sum: d089c08fbb4a965bb1843e58ad9def92
@@ -47,17 +42,12 @@ SHA256: f5d945b2b60354c19acfde52b0f1399dc3a32c77670d1c325ee2cfc95b403bd3
 
 Package: com.kuan.noads
 Name: CoolMarketNoAds
+Version: 1.0
+Architecture: iphoneos-arm64e
+Maintainer: Anonymous
 Author: Unknown Anonymous
 Description: Ku‘an goes to advertising
-* No pop-up window
-* Remove open-screen ads
-* Remove post ads
 Depends: mobilesubstrate
-Maintainer: Anonymous
-Architecture: iphoneos-arm64e
-Icon: https://aimijian.github.io/depictions/com.kuan.noads/coolmarketnoads.png
-Version: 1.0
-Pre-Depends: rootless-compat(>= 0.9)
 Filename: debs/CoolMarketNoAds.deb
 Size: 3488
 MD5sum: 236d6db7abb9873f9d5c084ee60db9be
@@ -66,14 +56,12 @@ SHA256: ccb6a027eecad9b50b42e8e0290fa8daa32bb22bac2eb270a9e905a7a45fa6da
 
 Package: com.opa334.cranelite
 Name: CraneLite
-Depends: firmware (>=11.0), mobilesubstrate, preferenceloader, com.opa334.altlist (>=1.0.5), com.opa334.libsandy, com.opa334.libundirect (>=1.1.4) | firmware (<<14.0)
-Conflicts: com.opa334.crane, com.opa334.crane13lite, com.opa334.crane13, com.rpgfarm.slices3, com.subdiox.slices2, com.expetelek.slices
-Description: Multiple containers for one application!
+Version: 1.3.16-5
+Architecture: iphoneos-arm64e
 Maintainer: opa334
 Author: opa334
-Architecture: iphoneos-arm64e
-Version: 1.3.16-5
-Pre-Depends: rootless-compat(>= 0.9)
+Description: Multiple containers for one application!
+Depends: firmware (>=11.0), mobilesubstrate, preferenceloader, com.opa334.altlist (>=1.0.5), com.opa334.libsandy, com.opa334.libundirect (>=1.1.4) | firmware (<<14.0)
 Filename: debs/CraneLite.deb
 Size: 328248
 MD5sum: b6704eded993b4ba22de0a664a1b7a68
@@ -85,10 +73,9 @@ Name: DynamicNotLand
 Version: 1.2.4
 Architecture: iphoneos-arm64e
 Maintainer: Nathan
-Depends: mobilesubstrate (>= 0.9.5000)
-Description: Hide the Dynamic Island when not in use.
-Icon: https://aimijian.github.io/depictions/com.nathan.dynamicnotland/dynamicnotland.png
 Author: Nathan
+Description: Hide the Dynamic Island when not in use.
+Depends: mobilesubstrate (>= 0.9.5000)
 Filename: debs/DynamicNotLand.deb
 Size: 12204
 MD5sum: 26061c609c419b1796ba93414d7b2edf
@@ -97,14 +84,12 @@ SHA256: 0e467d228dfc01372944df5544ac8730849f9156f814fc53a498b95e1a359e1e
 
 Package: com.netskao.filzacrack
 Name: FilzaCrack
-Depends: firmware (>= 15.0), mobilesubstrate, com.tigisoftware.filza64bit
-Description: Filza unlock full functionality, the main program please install in the official source
+Version: 1.1-8
+Architecture: iphoneos-arm64e
 Maintainer: Nets
 Author: Netskao
-Architecture: iphoneos-arm64e
-Icon: https://aimijian.github.io/depictions/com.netskao.filzacrack/filzacrack.png
-Version: 1.1-8
-Pre-Depends: rootless-compat(>= 0.9)
+Description: Filza unlock full functionality, the main program please install in the official source
+Depends: firmware (>= 15.0), mobilesubstrate, com.tigisoftware.filza64bit
 Filename: debs/FilzaCrack.deb
 Size: 5140
 MD5sum: 8772e9708dc35a61adc010b39cbcc189
@@ -113,13 +98,12 @@ SHA256: 62e46a8cd7d2709f212678df2be94ef23734aaefd8bd3b6bef229313ff4663e4
 
 Package: com.nahtedetihw.floatingdockxvi
 Name: FloatingDockXVI
-Description: Floating Dock on iOS 16
+Version: 2.3
+Architecture: iphoneos-arm64e
 Maintainer: Ethan Whited
 Author: Ethan Whited
+Description: Floating Dock on iOS 16
 Depends: preferenceloader
-Architecture: iphoneos-arm64e
-Version: 2.3
-Pre-Depends: rootless-compat(>= 0.9)
 Filename: debs/FloatingDockXVI.deb
 Size: 396688
 MD5sum: c81adf763012e8b8bd6f3bf4472ae684
@@ -128,14 +112,12 @@ SHA256: 91090d1f74dcd9c3fa9e0e8d6084b3059c88d09a156ae2651ee3e5ffb2fc7112
 
 Package: com.nightwind.floatingsafari
 Name: FloatingSafari
-Description: Bring the iOS 15 beta Safari experience to newer iOS
+Version: 0.0.1
+Architecture: iphoneos-arm64e
 Maintainer: Nightwind
 Author: Nightwind
-Icon: https://aimijian.github.io/depictions/com.nightwind.floatingsafari/floatingsafari.png
+Description: Bring the iOS 15 beta Safari experience to newer iOS
 Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 15.0)
-Architecture: iphoneos-arm64e
-Version: 0.0.1
-Pre-Depends: rootless-compat(>= 0.9)
 Filename: debs/FloatingSafari.deb
 Size: 9032
 MD5sum: d3ea95f3c3dd351f279a6ca1da4b43ce
@@ -144,14 +126,12 @@ SHA256: e042673755208057992b13fed0f31c56010e74766d2cd207c89a4937dc67b4ca
 
 Package: cn.null.fuckwechatadblocker
 Name: FuckWeChatAdBlocker
-Description: An awesome MobileSubstrate tweak!
+Version: 0.0.1-2+debug
+Architecture: iphoneos-arm64e
 Maintainer: null
 Author: null
+Description: An awesome MobileSubstrate tweak!
 Depends: mobilesubstrate (>= 0.9.5000)
-Architecture: iphoneos-arm64e
-Icon: https://aimijian.github.io/depictions/cn.null.fuckwechatadblocker/fuckwechatadblocker.png
-Version: 0.0.1-2+debug
-Pre-Depends: rootless-compat(>= 0.9)
 Filename: debs/FuckWeChatAdBlocker.deb
 Size: 16632
 MD5sum: ad11c7b2997ab71e35381ebb02dd9fc4
@@ -160,29 +140,26 @@ SHA256: 5bf080d104647293c4029137df49c5987379554d5c74426ff90a0122d96794d2
 
 Package: cn.zqbb.helloarea
 Name: HelloArea
-Description: Reduce the bottom bar of the application
+Version: 0.0.3
+Architecture: iphoneos-arm64e
 Maintainer: zqbb
 Author: zqbb
+Description: Reduce the bottom bar of the application
 Depends: mobilesubstrate (>= 0.9.5000)
-Icon: https://aimijian.github.io/depictions/cn.zqbb.helloarea/helloarea.png
-Architecture: iphoneos-arm64e
-Version: 0.0.3
-Pre-Depends: rootless-compat(>= 0.9)
 Filename: debs/HelloArea.deb
 Size: 55976
 MD5sum: 05f9ce0fee2edf93684ae28d860efe19
 SHA1: f8593d52fee24ddefc88a5307b85b90c444ab469
 SHA256: cd13b7eac6061e48bdbe04873912b5186d4e3df2b56efe51758f23fff96e7c13
 
-Name: HideCallBar
 Package: com.cydiageek.hidecallbar
-Depends: mobilesubstrate, firmware (>= 13.0)
+Name: HideCallBar
 Version: 1.0.0
 Architecture: iphoneos-arm64e
-Description: Hide StatusBar when Calling!
 Maintainer: CydiaGeek
 Author: CydiaGeek
-Pre-Depends: rootless-compat(>= 0.9)
+Description: Hide StatusBar when Calling!
+Depends: mobilesubstrate, firmware (>= 13.0)
 Filename: debs/HideCallBar.deb
 Size: 3836
 MD5sum: b6c54354a819ba30fb2e513cfb32266c
@@ -190,14 +167,13 @@ SHA1: a2f28ec02abdf6cfa00e995d4ae8d527f38ff36e
 SHA256: bfa321374cd90305322588c3dc2ccf78fe87da9364da46ed53ed9c65d6ac577a
 
 Package: com.yourepo.cydiageek.lsvibrantclockdate
-Architecture: iphoneos-arm64e
 Name: LSVibrantClockDate
 Version: 1.0.1
-Description: Vibrant Clock/Date on LS!
-Author: CydiaGeek
-Depends: mobilesubstrate
+Architecture: iphoneos-arm64e
 Maintainer: CydiaGeek
-Pre-Depends: rootless-compat(>= 0.9)
+Author: CydiaGeek
+Description: Vibrant Clock/Date on LS!
+Depends: mobilesubstrate
 Filename: debs/LSVibrantClockDate.deb
 Size: 3408
 MD5sum: d7b26ffd6e4ca3efc5cd386ca36b8a64
@@ -206,14 +182,12 @@ SHA256: 21e093ffa422a20eab0800bc1e2b349ee925ad37c660ed280f1975d16f42717b
 
 Package: dev.eskimo.labelless
 Name: Labelless
-Depends: mobilesubstrate, firmware (>= 13)
+Version: 1.1
 Architecture: iphoneos-arm64e
-Description: Removes the labels from the buttons on the bottom of any app using UITabBar
 Maintainer: Jordan Koch
 Author: Jordan Koch
-Icon: https://aimijian.github.io/depictions/dev.eskimo.labelless/labelless.png
-Version: 1.1
-Pre-Depends: rootless-compat(>= 0.9)
+Description: Removes the labels from the buttons on the bottom of any app using UITabBar
+Depends: mobilesubstrate, firmware (>= 13)
 Filename: debs/Labelless.deb
 Size: 3536
 MD5sum: 29faaf59dcbf4c8ae42a2f5662acca85
@@ -222,13 +196,12 @@ SHA256: 1f23cae0e35ae2ef6844476af8d4909a971935fae635e2c95d4c630b90bbcf40
 
 Package: com.icraze.nostatusls
 Name: NoStatusLS
-Description: Hide the status bar on the lock screen
+Version: 1.0
+Architecture: iphoneos-arm64e
 Maintainer: iCraze
 Author: iCraze
+Description: Hide the status bar on the lock screen
 Depends: mobilesubstrate (>= 0.9.5000)
-Architecture: iphoneos-arm64e
-Version: 1.0
-Pre-Depends: rootless-compat(>= 0.9)
 Filename: debs/NoStatusLS.deb
 Size: 4272
 MD5sum: 51dc6635b7b9e5491dec2d495bc7137f
@@ -237,14 +210,12 @@ SHA256: dcb579ce92198be80db27755cc74a058ef62215c963ea85962b07ad9330f9533
 
 Package: com.xx.ppxhook
 Name: PPxHook
-Description: Remove some advertisements
+Version: 1.0.8
+Architecture: iphoneos-arm64e
 Maintainer: x✨
 Author: x✨
+Description: Remove some advertisements
 Depends: mobilesubstrate (>= 0.9.5000)
-Architecture: iphoneos-arm64e
-Icon: https://aimijian.github.io/depictions/com.xx.ppxhook/ppxhook.png
-Version: 1.0.8
-Pre-Depends: rootless-compat(>= 0.9)
 Filename: debs/PPxHook.deb
 Size: 99944
 MD5sum: 922ad7dbd2921fb8af0157067a629912
@@ -253,13 +224,12 @@ SHA256: 0a414ac7d56cd3077b8ea237c6acad3fa317ce063e129a347e6e0c067f34b404
 
 Package: com.hw.proknockout
 Name: ProKnockout
+Version: 0.0.1
+Architecture: iphoneos-arm64e
+Maintainer: HelloWorld
 Author: HelloWorld
 Description: Unlock VIP
 Depends: mobilesubstrate
-Maintainer: HelloWorld
-Architecture: iphoneos-arm64e
-Version: 0.0.1
-Pre-Depends: rootless-compat(>= 0.9)
 Filename: debs/ProKnockout.deb
 Size: 377120
 MD5sum: bdfc5c6495200f7f6e8a3e65c7c4c01b
@@ -268,14 +238,12 @@ SHA256: ee77c7c750af1bdf23e93e19aaaf3282c4d870bb7cf9faa523b8a69d617f285d
 
 Package: applebetas.roundlockscreen
 Name: RoundLockScreen
+Version: 1.0.1
 Architecture: iphoneos-arm64e
-Description: iPhone X's display has rounded corners. The Lock Screen should too.
 Maintainer: AppleBetas
 Author: AppleBetas
-Version: 1.0.1
+Description: iPhone X's display has rounded corners. The Lock Screen should too.
 Depends: mobilesubstrate, firmware (>= 11.0), cy+cpu.arm64v8 | oldabi-xina | oldabi
-Icon: https://aimijian.github.io/depictions/applebetas.roundlockscreen/roundlockscreen.png
-Pre-Depends: rootless-compat(>= 0.9)
 Filename: debs/RoundLockScreen.deb
 Size: 7112
 MD5sum: 15a256d8da4e63c2cc74c85eeb3ebe31
@@ -284,12 +252,12 @@ SHA256: 534e46add636b45328029996cf766000cb30fc95218636ce73494e17816f127e
 
 Package: com.liuf.jpyj
 Name: RounderKB
-Description: Modify the keyboard icon to have rounded corners.
+Version: 1.0
+Architecture: iphoneos-arm64e
 Maintainer: liuf
 Author: liuf
+Description: Modify the keyboard icon to have rounded corners.
 Depends: mobilesubstrate (>= 0.9.5000)
-Architecture: iphoneos-arm64e
-Version: 1.0
 Filename: debs/RounderKB.deb
 Size: 2812
 MD5sum: 809e7410fbb6bdd96c58de363051aecf
@@ -298,30 +266,26 @@ SHA256: f52f2c20eae3a96feb5d40911df134d56a09bd86939fb97c155b442b0f906ddb
 
 Package: com.alias20.speedy
 Name: Speedy
-Description: Next generation of FastAnimator
+Version: 0.2
+Architecture: iphoneos-arm64e
 Maintainer: alias20
 Author: alias20
+Description: Next generation of FastAnimator
 Depends: mobilesubstrate, com.opa334.altlist, preferenceloader
-Architecture: iphoneos-arm64e
-Icon: https://aimijian.github.io/depictions/com.alias20.speedy/speedy.png
-Version: 0.2
-Pre-Depends: rootless-compat(>= 0.9)
 Filename: debs/Speedy.deb
 Size: 27340
 MD5sum: 8f36500ca5cc060e6fae1a8a17204ad3
 SHA1: b38e1749436a04e3e22965355f8c56d5fcdd2101
 SHA256: e45ada711f6438f621a304104232c106a41bce5852fcf73b07aedbfc99635325
 
-Maintainer: 0xkuj
 Package: com.sini.staypro
 Name: StayPro
-Description: Unlock Pro
-Author: 0xkuj
-Depends: mobilesubstrate (>= 0.9.5000)
-Architecture: iphoneos-arm64e
-Icon: https://aimijian.github.io/depictions/com.sini.staypro/staypro.png
 Version: 0.0.1
-Pre-Depends: rootless-compat(>= 0.9)
+Architecture: iphoneos-arm64e
+Maintainer: 0xkuj
+Author: 0xkuj
+Description: Unlock Pro
+Depends: mobilesubstrate (>= 0.9.5000)
 Filename: debs/StayPro.deb
 Size: 3420
 MD5sum: d5d3cf3d64ae9c2fa807df34b49aeed3
@@ -330,14 +294,12 @@ SHA256: 656f1bde163ed78f4293207e7e0633e545df654544866ad5e835de1d71bcef6f
 
 Package: com.lailaazmi.retouch
 Name: TouchRetouch
+Version: 3.0
+Architecture: iphoneos-arm64e
+Maintainer: LailaAzmi
 Author: LailaAzmi
 Description: Unlocked All Features · Remove Ads & Banners
 Depends: mobilesubstrate
-Maintainer: LailaAzmi
-Architecture: iphoneos-arm64e
-Icon: https://lailaazmi.github.io/laila/com.lailaazmi.retouch/touchretouch.png
-Version: 3.0
-Pre-Depends: rootless-compat(>= 0.9)
 Filename: debs/TouchRetouch.deb
 Size: 67484
 MD5sum: d23e5432b65af8e9b0342e17f8562d59
@@ -345,15 +307,13 @@ SHA1: 2b3aac1f85a853c6a11aedcebf0a91a39682eb2b
 SHA256: d170072b19abbda3db7906e8451d49004a805a442eb5d1d94aa1a2ab45ae72e3
 
 Package: com.bid3v.uki
-Maintainer: biD3V
-Architecture: iphoneos-arm64e
-Version: 1.0.0
-Depends: firmware (>= 13.0), mobilesubstrate (>= 0.9.5000)
-Description: Makes the package header float in Sileo.
 Name: Uki
+Version: 1.0.0
+Architecture: iphoneos-arm64e
+Maintainer: biD3V
 Author: biD3V
-Icon: https://aimijian.github.io/depictions/com.bid3v.uki/uki.png
-Pre-Depends: rootless-compat(>= 0.9)
+Description: Makes the package header float in Sileo.
+Depends: firmware (>= 13.0), mobilesubstrate (>= 0.9.5000)
 Filename: debs/Uki.deb
 Size: 9496
 MD5sum: 6f4d2665c585bc62cf3a014c18aedfee
@@ -362,14 +322,12 @@ SHA256: 0c207b370bcb67c0031eaa85cd1e35242bd21f9385ecdd83f1b70d22fc9cefce
 
 Package: com.wxrise.wechat
 Name: WxRise
+Version: 1.1
+Architecture: iphoneos-arm64e
+Maintainer: z
 Author: zydf
 Description: The WeChat chat interface is raised
 Depends: mobilesubstrate
-Maintainer: z
-Architecture: iphoneos-arm64e
-Icon: https://aimijian.github.io/depictions/com.wxrise.wechat/wxrise.png
-Version: 1.1
-Pre-Depends: rootless-compat(>= 0.9)
 Filename: debs/WxRise.deb
 Size: 3088
 MD5sum: f8bad4ad5ba459d24a49f605b30fffe0
@@ -377,15 +335,13 @@ SHA1: 7a928ec131289ff767e453a26128af0e29428264
 SHA256: 24e93f76354f248d6c9e879c94ae03ba9159e5df3750c1513dd249959264f3cf
 
 Package: com.25mao.leftpan.rootless
-Description: Slide left to return to the previous page
-Version: 1.0-6
-Priority: optional
-Maintainer: Mao
-Depends: mobilesubstrate, preferenceloader, com.opa334.altlist (>=1.0.4)
-Architecture: iphoneos-arm64e
 Name: leftPan
+Version: 1.0-6
+Architecture: iphoneos-arm64e
+Maintainer: Mao
 Author: Mao
-Pre-Depends: rootless-compat(>= 0.9)
+Description: Slide left to return to the previous page
+Depends: mobilesubstrate, preferenceloader, com.opa334.altlist (>=1.0.4)
 Filename: debs/leftPan.deb
 Size: 43028
 MD5sum: 2b1da8c7537fbba6d45a5a8f08673259
