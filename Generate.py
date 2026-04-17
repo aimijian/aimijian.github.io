@@ -27,7 +27,7 @@ def compute_hashes(path):
 
 entries = []
 
-for file in os.listdir(DEBS_DIR):
+for file in sorted(os.listdir(DEBS_DIR)):
     if not file.endswith(".deb"):
         continue
 
@@ -43,6 +43,9 @@ for file in os.listdir(DEBS_DIR):
     for line in control.splitlines():
         if line.lower().startswith("package:"):
             package = line.split(":", 1)[1].strip()
+
+    if not package:
+        continue
 
     pkg_dir = os.path.join(DEPICTIONS_DIR, package.lower())
     os.makedirs(pkg_dir, exist_ok=True)
@@ -85,11 +88,21 @@ for file in os.listdir(DEBS_DIR):
     with open(os.path.join(pkg_dir, "depiction.json"), "w", encoding="utf-8") as f:
         json.dump(depiction, f, indent=2, ensure_ascii=False)
 
+    control_lines = []
+    for line in control.splitlines():
+        if not line.strip():
+            continue
+        if line.lower().startswith("filename:"):
+            continue
+        control_lines.append(line.strip())
+
+    control_clean = "\n".join(control_lines)
+
     size = os.path.getsize(path)
     md5sum, sha1sum, sha256sum = compute_hashes(path)
 
     entry = []
-    entry.append(control)
+    entry.append(control_clean)
     entry.append(f"Filename: debs/{file}")
     entry.append(f"Size: {size}")
     entry.append(f"MD5sum: {md5sum}")
@@ -107,5 +120,6 @@ for file in os.listdir(DEBS_DIR):
 with open("Packages", "w", encoding="utf-8") as f:
     f.write("\n".join(entries))
 
-os.system("gzip -kf Packages")
-os.system("bzip2 -kf Packages")
+os.system("rm -f Packages.gz Packages.bz2")
+os.system("gzip -c Packages > Packages.gz")
+os.system("bzip2 -c Packages > Packages.bz2")
