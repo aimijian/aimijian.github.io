@@ -8,9 +8,6 @@ DEBS_DIR = "debs"
 DEPICTIONS_DIR = "depictions"
 BASE_URL = "https://aimijian.github.io"
 
-if not os.path.exists(DEPICTIONS_DIR):
-    os.makedirs(DEPICTIONS_DIR, exist_ok=True)
-
 for root, dirs, files in os.walk(DEPICTIONS_DIR):
     for f in files:
         if f != f.lower():
@@ -30,7 +27,7 @@ def compute_hashes(path):
 
 entries = []
 
-for file in sorted(os.listdir(DEBS_DIR)):
+for file in os.listdir(DEBS_DIR):
     if not file.endswith(".deb"):
         continue
 
@@ -44,11 +41,8 @@ for file in sorted(os.listdir(DEBS_DIR)):
 
     package = ""
     for line in control.splitlines():
-        if line.lower().startswith("package:"):
+        if line.startswith("Package:"):
             package = line.split(":", 1)[1].strip()
-
-    if not package:
-        continue
 
     pkg_dir = os.path.join(DEPICTIONS_DIR, package.lower())
     os.makedirs(pkg_dir, exist_ok=True)
@@ -88,36 +82,23 @@ for file in sorted(os.listdir(DEBS_DIR)):
     if header:
         depiction["headerImage"] = f"{BASE_URL}/depictions/{package.lower()}/{header.lower()}"
 
-    with open(os.path.join(pkg_dir, "depiction.json"), "w", encoding="utf-8") as f:
-        json.dump(depiction, f, indent=2, ensure_ascii=False)
+    if not screenshots and not header:
+        depiction = None
 
-    control_lines = []
-    seen_keys = set()
-
-    for line in control.splitlines():
-        if not line.strip():
-            continue
-
-        if ":" in line and not line.startswith(" "):
-            key, value = line.split(":", 1)
-            key = key.strip()
-
-            if key.lower() in ["filename", "size", "md5sum", "sha1", "sha256"]:
-                continue
-
-            if key in seen_keys:
-                continue
-
-            seen_keys.add(key)
-            control_lines.append(f"{key}: {value.strip()}")
-
-        else:
-            continue
-
-    control_clean = "\n".join(control_lines)
+    if depiction:
+        with open(os.path.join(pkg_dir, "depiction.json"), "w", encoding="utf-8") as f:
+            json.dump(depiction, f, indent=2, ensure_ascii=False)
 
     size = os.path.getsize(path)
     md5sum, sha1sum, sha256sum = compute_hashes(path)
+
+    control_lines = []
+    for line in control.splitlines():
+        if line.lower().startswith("filename:"):
+            continue
+        control_lines.append(line)
+
+    control_clean = "\n".join(control_lines)
 
     entry = []
     entry.append(control_clean)
@@ -138,6 +119,5 @@ for file in sorted(os.listdir(DEBS_DIR)):
 with open("Packages", "w", encoding="utf-8") as f:
     f.write("\n".join(entries))
 
-os.system("rm -f Packages.gz Packages.bz2")
-os.system("gzip -c Packages > Packages.gz")
-os.system("bzip2 -c Packages > Packages.bz2")
+os.system("gzip -kf Packages")
+os.system("bzip2 -kf Packages")
