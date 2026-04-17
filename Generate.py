@@ -92,12 +92,30 @@ for file in sorted(os.listdir(DEBS_DIR)):
         json.dump(depiction, f, indent=2, ensure_ascii=False)
 
     control_lines = []
+    current_key = None
+    current_value = []
+
     for line in control.splitlines():
         if not line.strip():
             continue
-        if line.lower().startswith("filename:"):
-            continue
-        control_lines.append(line.rstrip())
+
+        if ":" in line and not line.startswith(" "):
+            if current_key:
+                value = " ".join(current_value).strip()
+                control_lines.append(f"{current_key}: {value}")
+            key, value = line.split(":", 1)
+            current_key = key.strip()
+            if current_key.lower() == "filename":
+                current_key = None
+                current_value = []
+                continue
+            current_value = [value.strip()]
+        else:
+            current_value.append(line.strip())
+
+    if current_key:
+        value = " ".join(current_value).strip()
+        control_lines.append(f"{current_key}: {value}")
 
     control_clean = "\n".join(control_lines)
 
