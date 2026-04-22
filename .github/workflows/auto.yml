@@ -1,0 +1,38 @@
+name: auto
+
+on:
+  push:
+    paths:
+      - 'debs/**'
+      - 'depictions/**'
+      - 'Generate.py'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dpkg-dev gzip bzip2 python3
+
+      - name: run Generate.py
+        run: python3 Generate.py
+
+      - name: commit generated files
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+          git add Packages Packages.gz Packages.bz2 depictions
+
+          git diff --cached --quiet && exit 0
+
+          git commit -m "auto build [skip ci]"
+          git push
